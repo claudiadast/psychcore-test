@@ -30,13 +30,13 @@ Setting up the Pipeline Platform
 ================================
 
 ------------------------
-1. Create an AWS Account
+Create an AWS Account
 ------------------------
 
 If you do not have one already, please create an Amazon Web Services (AWS) account, as this will be the platform upon which the pipeline is executed. 
 
 -----------------------------
-2. Submit AWS Limit Increases
+Submit AWS Limit Increases
 -----------------------------
 
 Depending on the current status of your AWS account and the number of samples on which you plan to call variants, you may need to increase the number of instance types to support the respective sample scale. 
@@ -44,7 +44,7 @@ Depending on the current status of your AWS account and the number of samples on
 To check the current status of your AWS limits, go to the EC2 dashboard in the AWS console, followed by the "Limits" tab on the left panel. If you need more instances of a certain type, find that instance type and click on "Request limit increase". Please note that this may take some time to process, so it should be done early.
 
 ---------------------------------
-3. Obtain a Sentieon License File
+Obtain a Sentieon License File
 ---------------------------------
 
 Because the current build only supports Sentieon for the variant calling steps, you will need to obtain a Sentieon license:
@@ -57,7 +57,7 @@ Setting up Dev Environment
 ==========================
 
 -----------------------------------------
-4. Install Conda, VirtualEnv, or whatever
+Install Conda, VirtualEnv, or whatever
 -----------------------------------------
 
 See: https://conda.io/miniconda.html
@@ -67,7 +67,7 @@ See: https://conda.io/miniconda.html
 * Run the installer. The defaults should be fine.
 
 ----------------------------------
-5. Create a Python 3.6 environment
+Create a Python 3.6 environment
 ----------------------------------
 
 ::
@@ -75,7 +75,7 @@ See: https://conda.io/miniconda.html
    $ conda create -n psy-ngs python=3.6
 
 ----------------------------------------------------------------------------------------
-6. Activate the newly created environment (you may need to start a new terminal session)
+Activate the newly created environment (you may need to start a new terminal session)
 ----------------------------------------------------------------------------------------
 
 ::
@@ -92,7 +92,7 @@ You should also see the environment name prepended to your shell prompt, e.g.::
    (psy-ngs) $ echo "See the environment name?"
 
 ----------------------------------------------------------------------------------------------------------
-7. After activating the environment for this project, install the python dependencies into the environment
+After activating the environment for this project, install the python dependencies into the environment
 ----------------------------------------------------------------------------------------------------------
 
 ::
@@ -101,7 +101,7 @@ You should also see the environment name prepended to your shell prompt, e.g.::
    (psy-ngs) $ pip install -r requirements.txt
 
 ----------------------
-8. Run the application
+Run the application
 ----------------------
 
 ::
@@ -110,7 +110,7 @@ You should also see the environment name prepended to your shell prompt, e.g.::
    (psy-ngs) $ python rkstr8.py proj-mngr
 
 ----------------------------------
-9. Managing pipelines and projects
+Managing pipelines and projects
 ----------------------------------
 
 Note to devs:
