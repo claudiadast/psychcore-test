@@ -22,6 +22,8 @@ Indices and tables
 About
 =====
 
+The following NGS pipeline was developed by the UCSF Psychiatry Bioinformatics Core (PsychCore) team. The current build is equipped to automatically call variants on both whole genome and whole exome samples and produce an output VCF, all based on the user's input. Please note that this pipeline is still being developed and will include more features in the future, including: downstream analysis in Hail via Google Cloud's Dataproc, the option to run variant calling on GATK4, and a simple web user-interface to launch it off.
+
 ==========================
 Setting up Dev Environment
 ==========================
