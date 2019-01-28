@@ -17,10 +17,4 @@ Psychiatry Bioinformatics Core (PsychCore), under the
 * Claudia Dastmalchi: claudia.dastmalchi@ucsf.edu
 * Lindsay Liang: lindsay.liang@ucsf.edu
 
-
---------------------
-A Note to Developers
---------------------
-* Keep an updated requirements.txt
-
 .. _Sanders lab: https://sanderslab.github.io/

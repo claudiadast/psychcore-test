@@ -1,4 +1,4 @@
-.. _s onf:
+.. _sec-conf:
 
 ========================
 Configuring the Pipeline
@@ -14,7 +14,7 @@ In the current build of the pipeline, you, the user, will have to modify the
 ``run.yaml`` file located in the root of the project.  It has 24 fields and looks
 like the following:
 
-.. co lock:: yaml
+.. code-block:: yaml
  	# Infrastructure configuration
 	STACK_NAME : 
 	RESOURCE_CFN_TMPL_DEPLOY_BUCKET : 
