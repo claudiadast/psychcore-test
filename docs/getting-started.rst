@@ -32,39 +32,34 @@ on the `AWS Instance Pricing page`_.
 
 .. _refs:
 
-Creating a Google Cloud Platform (GCP) Account
-----------------------------------------------
-
-Stuff?
-
 
 Download and Upload Reference Files to S3
 -----------------------------------------
 
 The pipeline performs many operations which require several reference files.
-(Eg. the human reference genome fasta and its indexes).  These must be uploaded
+(Eg. the human reference genome fasta and its indices). These must be uploaded
 to AWS S3 before the pipeline can be run.  The standard reference files are
 provided by the Broad Institute's `GATK Resource Bundle`_.  
 Currently, the pipeline supports two builds of the human reference 
 genome - GRCh37_ (hg19) and GRCh38_ (hg38).  GRCh37 files are located on
-the Broad Institute's ftp site while GRCH38 is hosted on Google Cloud Storage.
+the Broad Institute's ftp site, while GRCH38 is hosted on Google Cloud Storage.
 
-In order to upload the reference files to AWS S3, you'll need to install
+In order to upload the reference files to AWS S3, you will need to install
 the AWS Command Line Interface - please see `AWS CLI Installation`_.
 For uploading files onto S3, please see the `AWS S3 documentation`_.
 
 Obtain a Sentieon License File
 ---------------------------------
 
-Currently, the pipeline utilises only Sentieon_ in its haplotyping and joint
-genotyping steps.  Thus, in order to use the pipeline you must first contact
+Currently, the pipeline utilizes only Sentieon_ in its haplotyping and joint
+genotyping steps.  Thus, in order to use the pipeline, you must first contact
 Sentieon and obtain a license.  They also offer a free trial_.
 
 
 Install Conda and your Dev Environment
 --------------------------------------
 
-In order to run the pipeline, you'll need to install Conda_.
+In order to run the pipeline, you will need to install Conda_.
 
 * If you have python 2.7 installed currently, pick that installer.
 * If you have python 3.6 installed currently, pick that.
@@ -102,7 +97,7 @@ After activating the environment install the pipeline's python dependencies:
 Next Steps
 ----------
 
-You're almost ready to run the pipeline - next you'll need to configure it
+You are almost ready to run the pipeline - next you will need to configure it
 with your run specifications.  Please see :ref:`runyaml` to continue.
 
 
