@@ -8,155 +8,125 @@ Configuring the Pipeline
 
 Your Pipeline Run
 -----------------
-Before running the pipeline, some information must be provided to the pipeline.
+The pipeline requires some information from the user to run.
 In the current build of the pipeline, you, the user, will have to modify the 
-<run.yaml> file located in the root of the project.  It looks something like
-the following:
+``run.yaml`` file located in the root of the project.  It has 23 fields and looks
+like the following:
 
 .. code-block:: yaml
 
 	---
-	STACK_NAME : ""
-	RESOURCE_CFN_TMPL_DEPLOY_BUCKET : ""
+	# Infrastructure configuration
+	STACK_NAME : 
+	RESOURCE_CFN_TMPL_DEPLOY_BUCKET : 
+	GPCE_SSH_KEY_PAIR : 
+	START_POINT : 
+	QC : 
 
-	# GCP Related
-	GCP_CREDS_FILE : ""
-	CLUSTER_NAME : ""
-	CLOUD_TRANSFER_OUTBUCKET : ""
-	MASTER_TYPE : ""
-	WORKER_TYPE : ""
-	NUM_MASTERS : ""
-	NUM_WORKERS : ""
-	NUM_PREEMPT_WORKERS : ""
-	INIT_BUCKET_PREFIX : ""
-	INIT_BUCKET_KEY : ""
-	MASTER_BOOT_DISK_SIZE : ""
-	WORKER_BOOT_DISK_SIZE : ""
-	PREEMPT_BOOT_DISK_SIZE : ""
-	MASTER_NUM_SSDS : ""
-	WORKER_NUM_SSDS : ""
-	PREEMPT_NUM_SSDS : ""
-	HAIL_SCRIPT_BUCKET : ""
-	HAIL_SCRIPT_KEY : ""
-	SPARK_VERSION : ""
-	HAIL_VERSION : ""
-	PROJECT_ID : ""
-	ZONE: ""
+	# Input/output file locations
+	INPUT : 
+	OUTPUT : 
+	REF_URI : 
+	USER_ASSETS_URI : 
 
-	GPCE_SSH_KEY_PAIR : ""
+	# User assets
+	SAMPLE_FILE : 
+	TARGET : 
+	SENTIEON_PACKAGE_NAME : 
+	SENTIEON_LICENSE_NAME : 
 
-	INPUT : ""
-	OUTPUT : ""
-	REF_BUCKET_URI : ""
-	SAMPLES :
-	  - ""
-	  - ""
-	COHORT_PREFIX : ""
+	# Cohort information
+	NUM_SAMPLES : 
+	COHORT_PREFIX : 
+	BUILD : 
+	OME : 
 
-	BUILD : ""
-	OME : ""
-	MODE : ""
+	# Google Cloud Platform related configuration
+	CLOUDSPAN_MODE: 
+	GCP_CREDS_FILE : 
+	CLOUD_TRANSFER_OUTBUCKET : 
+	PROJECT_ID : 
+	ZONE : 
+	CLOUD_FILE: 
 
-	TARGET : ""
-	TARGET_FILE_LOCAL_PATH : ""
-	TARGET_FILE_S3_KEY_PREFIX : ""
-	TARGET_FILE_S3_BUCKET : ""
+	# Docker
+	DOCKER_ACCOUNT: 
 
-	SENTIEON_PACKAGE_PATH : ""
-	SENTIEON_PACKAGE_NAME: ""
-	SENTIEON_LICENSE_PATH : ""
-	SENTIEON_BUCKET : ""
-	SENTIEON_PREFIX : ""
-	
-
-	PARAM_FILE : ""
-	PARAM_PATH : ""
-	PARAM_BUCKET : ""
-	PARAM_PREFIX : ""
-
-	POLL_TIME : ""
 
 Each field must have a value for the pipeline to run.  Listed below are
 descriptions for each of the fields.  For more information about the yaml
 file format, see the `official yaml website`_.
 
-* STACK_NAME 
-	- The name of the AWS Cloudformation stack associated with the pipeline run.
-* RESOURCE_CFN_TMPL_DEPLOY_BUCKET
-	- The AWS S3 bucket where the AWS Lambda functions and other resources will be uploaded. 
-* GCP_CREDS_FILE
-	- The full path to the credentials file for GCP for the validation step of the pipeline. 
-* CLUSTER_NAME
-	- The name of the dataproc cluster for the validation step of the pipeline. 
-* CLOUD_TRANSFER_OUTBUCKET
-	- The GCS Bucket to upload the final VCF from AWS S3.
-* MASTER_TYPE - 
-* WORKER_TYPE - 
-* NUM_MASTERS - 
-* NUM_WORKERS - 
-* NUM_PREEMPT_WORKERS - 
-* INIT_BUCKET_PREFIX - 
-* INIT_BUCKET_KEY - 
-* MASTER_BOOT_DISK_SIZE - 
-* WORKER_BOOT_DISK_SIZE - 
-* PREEMPT_BOOT_DISK_SIZE - 
-* MASTER_NUM_SSDS - 
-* WORKER_NUM_SSDS - 
-* PREEMPT_NUM_SSDS - 
-* HAIL_SCRIPT_BUCKET - 
-* HAIL_SCRIPT_KEY - 
-* SPARK_VERSION - 
-* HAIL_VERSION - 
-* PROJECT_ID - 
-* ZONE - 
-* GPCE_SSH_KEY_PAIR - 
+*Infrastructure configuration*
 
-* INPUT 
-	- The AWS S3 URI where the fastq for all SAMPLES are locate (eg. s3://analysis/fastqs/).
-* OUTPUT 
-	- The AWS S3 URI where the output should be uploaded (eg. s3://analysis/results/).
-* REF_BUCKET_URI 
-	- The AWS S3 URI where the reference files are located (see :ref:`refs`).
-* SAMPLES 
-	- A yaml list of the sample names that are present in INPUT.
-* COHORT_PREFIX
-	- The name given to the vcf produced at the joint genotyping step (eg family5 will produce family5.gt.vcf).
-* BUILD
-	- The build of the human reference to be used; either GRCh37 or GRCh38.
-* OME
-	- Either wgs or wes; dictates whether the pipeline should run whole genome or targeted/exome analysis.
-* MODE
-	- Set to prod, unless in development, then use test.
-* TARGET
-	- The BED file which describes the intervals to be used if OME is set to wes.
-* TARGET_FILE_LOCAL_PATH
-	- The relative path to TARGET from the root of the project directory.
-* TARGET_FILE_S3_KEY_PREFIX
-	- The S3 prefix for where TARGET should be uploaded.
-* TARGET_FILE_S3_BUCKET
-	- The S3 bucket for where TARGET should be uploaded.
-* SENTIEON_PACKAGE_NAME
-	- The name of the tar.gz Sentieon software package (eg. sentieon-genomics-201711.01.tar.gz) 
-* SENTIEON_PACKAGE_PATH
-	- The relative path to SENTIEON_PACKAGE_NAME from the root of the project directory. 
-* SENTIEON_LICENSE_NAME
-	- The name of the Sentieon license file. 
-* SENTIEON_LICENSE_PATH
-	- The relative path to SENTIEON_LICENSE from the root of the project directory. 
-* SENTIEON_BUCKET
-	- The S3 bucket for where the Sentieon software package and license should be uploaded.
-* SENTIEON_PREFIX
-	- The S3 prefix for where the Sentieon software package and license should be uploaded. 
-* PARAM_BUCKET
-	- The S3 bucket for where the tool_parameter yaml file should be uploaded. 
-* PARAM_PREFIX
-	- The S3 prefix for where the tool_parameter yaml file should be uploaded. 
-* POLL_TIME
-	- The number of seconds the Step Functions state machine should wait before polling for completed jobs (see :ref:`infrastructure`) 
+* *STACK_NAME*
+	- The name of the Cloudformation (CFN) stack
+* *RESOURCE_CFN_TMPL_DEPLOY_BUCKET*
+	- Bucket name (e.g. pipeline-run)
+* *GPCE_SSH_KEY_PAIR*
+	- Account-specific key pair for using AWS EC2 (e.g. John_Key)
+* *START_POINT*
+	- The format of the input files (fastq|bam|gvcf|vcf)
+* *QC*
+	- List of what QC to run (BAM|VCF)
 
-.. _official yaml website: http://yaml.org
+*Input/output file locations*
+
+* *INPUT*
+	- S3 location of your fastq files (e.g. s3://pipeline-run/fastqs/)
+* *OUTPUT*
+	- S3 location of all resulting files (e.g. s3://pipeline-run/results/
+* *REF_URI*
+	- S3 location of reference genome files (e.g. s3://GRCh38-references/)
+* *USER_ASSETS_URI*
+	- S3 location for users' assets upload
+
+
+*User assets*
+
+* *SAMPLE_FILE*
+	- Name of the file which has the list of sample names (prefix to .fastq.gz)
+* *TARGET*
+	- Interval BED file if ome is "wes" (e.g. Exome-NGv3.bed)
+* *SENTIEON_PACKAGE_NAME*
+	- The Sentieon software file (e.g. sentieon-genomics-201711.01.tar.gz)
+* *SENTIEON_LICENSE_NAME*
+	- Name of the Sentieon license file (e.g mylicense.lic)
+
+*Cohort information*
+
+* *NUM_SAMPLES*
+	- Number of samples to run, e.g. the length of SAMPLE_FILE
+* *COHORT_PREFIX*
+	- Prefix for your resulting VCF (e.g. cohort1)
+* *BUILD*
+	- Build of the reference genome (GRCh38 | GRCh37)
+* *OME*
+	- Choice between whole exome or whole genome (wgs | wes)
+
+*Google Cloud Platform related configuration*
+
+* *CLOUDSPAN_MODE*
+	- Which hail method to run (validation|qc)
+* *GCP_CREDS_FILE*
+	- Absolute path to your Google Cloud service account json (e.g. /Users/Keys/service_creds.json)
+* *CLOUD_TRANSFER_OUTBUCKET*
+	- The Google Cloud bucket to which VCF will be transferred (e.g. gs://pipeline-run)
+* *PROJECT_ID*
+	- ID for your Google Cloud Project (e.g. GCP assigns names like "summer-water-178325")
+* *ZONE*
+	- The zone in which you want your data to be stored on Google Cloud (e.g. us-east4-b)
+* *CLOUD_FILE*
+	- The name of the file in USER_ASSETS which has the gcp-related template file
+
+*Docker Information*
+
+* *DOCKER_ACCOUNT*
+	- The name of your docker account (if not using the default: ucsfpsychcore)
 
 Next Steps
 ----------
 
 Once run.yaml has been properly filled out, the pipeline is ready to be run. Please see :ref:`run` to continue.
+
+.. _official yaml website: http://yaml.org
