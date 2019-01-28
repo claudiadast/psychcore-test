@@ -17,16 +17,17 @@ launched (with an internet connection) with the following command:
    (psy-ngs) $ cd path/to/this/repo/
    (psy-ngs) $ python rkstr8_driver.py -p <pipeline-name> [ -a access_key_id ] [ -s secret_access_key ]
 
-* ``pipeline-name`` can be either germline_wgs, or validation, to indicate whether or not the user wishes to run validation on GCP with Hail.
-* ``access_key_id`` and ``secret_access_key`` are the access_key_id and secret_access_key key pair associated with the user's AWS account.
+* ``pipeline-name`` can be either ``germline_wgs``, or ``validation``, to indicate 
+	whether or not the user wishes to run validation on GCP with Hail.
+
+* ``access_key_id`` and ``secret_access_key`` are the ``ACCESS_KEY_ID`` and 
+	``SECRET_ACCESS_KEY`` key pair associated with the user's AWS account. (Note: These only have to be included if you are running any Google Cloud processes.)
 
 The pipeline initialization takes approximately 5 minutes.  
 Afterwards, since the pipeline is serverless, the user can close their laptop 
 (or similarily shut down their computer), and the pipeline will continue to run
 on AWS.
 
-
----------------
 Pipeline Output
 ---------------
 
@@ -39,6 +40,7 @@ if, for example, ``OUTPUT`` was set to ``s3://analysis/results/``:
 	
 	aws s3 ls s3://analysis/results/
 			PRE bam-processing/
+			PRE bam-qc/
 			PRE bgz-gvcfs/
 			PRE cohort-vcf-vqsr/
 			PRE final-cohort-vcf/
@@ -46,9 +48,10 @@ if, for example, ``OUTPUT`` was set to ``s3://analysis/results/``:
 			PRE processed-bams/
 
 The figure below illustrates what files are written under which of the above
-prefixes.
+prefixes.  Note that the ``PRE bam-qc/`` prefix only appears if the user has
+indicated ``True`` for ``BAM_QC`` in ``run.yaml``.
 
-.. image:: PipelineWorkflowS3Locations.png
+.. image:: PipelineWorkflowS3.jpg
 
-The **logs/** prefix contains the logs for all of the pipeline steps.
+The ``logs/`` prefix contains the logs for all of the pipeline steps.
 
