@@ -8,14 +8,15 @@ Configuring the Pipeline
 
 Your Pipeline Run
 -----------------
-
-The pipeline requires some information from the user before kicking it off.
+The pipeline requires some information from the user to run.
 In the current build of the pipeline, you, the user, will have to modify the 
-``run.yaml`` file located in the root of the project.  It has 24 fields and looks
+``run.yaml`` file located in the root of the project.  It has 23 fields and looks
 like the following:
 
 .. code-block:: yaml
- 	# Infrastructure configuration
+
+	---
+	# Infrastructure configuration
 	STACK_NAME : 
 	RESOURCE_CFN_TMPL_DEPLOY_BUCKET : 
 	GPCE_SSH_KEY_PAIR : 
@@ -50,7 +51,6 @@ like the following:
 
 	# Docker
 	DOCKER_ACCOUNT: 
-
 
 Each field must have a value for the pipeline to run.  Listed below are
 descriptions for each of the fields.  For more information about the yaml
