@@ -1,5 +1,4 @@
 import os
-
 # -*- coding: utf-8 -*-
 #
 # Configuration file for the Sphinx documentation builder.
@@ -21,7 +20,7 @@ import os
 
 # -- Project information -----------------------------------------------------
 
-project = 'Psychcore NGS Germline Variant Pipeline'
+project = 'Psychcore NGS Variant-Calling Pipeline'
 copyright = '2018, Michael Gilson, Claudia Dastmalchi, Lindsay Liang'
 author = 'Michael Gilson, Claudia Dastmalchi, Lindsay Liang'
 
@@ -80,7 +79,7 @@ on_rtd = os.environ.get('READTHEDOCS') == 'True'
 if on_rtd:
     html_theme = 'default'
 else:
-    html_theme = 'nature'
+    html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
