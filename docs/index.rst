@@ -29,13 +29,3 @@ is still being developed.
    Running the Pipeline and its Output <out>
    Contact Us <contact>
 
-
-
-==================
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
