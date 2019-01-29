@@ -50,7 +50,7 @@ The figure below illustrates what files are written under which of the above
 prefixes.  Note that the ``PRE bam-qc/`` prefix only appears if the user has
 listed ``BAM`` for the ``QC`` parameter in ``run.yaml``.
 
-.. image:: PipelineWorkflowS3.jpg
+.. image:: PipelineworkflowS3.jpg
 
 The ``logs/`` prefix contains the logs for all of the pipeline steps.
 
