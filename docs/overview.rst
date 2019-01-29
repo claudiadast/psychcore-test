@@ -13,12 +13,12 @@ pipeline for calling germline variants on large cohorts of human sequencing samp
 
 The pipeline takes gzipped paired end sequencing fastq files (R1|R2.fastq.gz) 
 for each sample and aligns them to a specified reference build, using BWA MEM.  
-Several BAM processing steps (Picard and GATK) follow to produced a final 
-processed BAM which is haplotyped using Sentieon's* Haplotyper module.  This
+Several BAM processing steps (Picard and GATK) follow to produce a final 
+processed BAM, which is haplotyped using Sentieon's* Haplotyper module.  This
 BAM can optionally undergo a quality analysis using Picard's ``CollectWGSMetrics``
 module.  These steps are done in parallel for each sample in the cohort.  
 After Haplotyper is run, joint genotyping is performed accross the entire 
-cohort with Sentieon's Genotyper module, producing a VCF that gets passed to VQSR (GATK)
+cohort with Sentieon's Genotyper module, producing a VCF that gets passed to VQSR (GATK) and 
 outputs the final VCF.
 
 .. _infrastructure:
@@ -29,13 +29,13 @@ Pipeline Infrastructure
 Several AWS services are invovled in the infrastructure of the pipeline -
 AWS CloudFormation_, StepFunctions_, Lambda_, Batch_, EC2_, S3_, and CloudWatch_.
 The pipeline also makes use of Docker_ containers, as well as Google Cloud
-Platform's (GCP_) Google Cloud Storage (GCS_), and Dataproc_.
+Platform's (GCP_) Google Cloud Storage (GCS_) and Dataproc_ services for downstream processes (in development).
 
 .. image:: PipelineInfrastructure.jpg
 
 The pipeline's main bioinformatics tools are `BWA MEM`_, Picard_, 
 GATK_, and Sentieon_.  Each of these tools have been (Docker) 
-containerised and are deployed using AWS Batch. AWS Lambda 
+containerized and are deployed using AWS Batch. AWS Lambda 
 and AWS StepFunctions manage the submission of jobs to the Batch
 cluster as well as the handling of user input.  The entire system
 architecture of the pipeline is managed by AWS CloudFormation while

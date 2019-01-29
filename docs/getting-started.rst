@@ -4,7 +4,7 @@
 Getting Started
 ===============
 
-You'll need:
+You will need:
 
 * An AWS account
 * A Sentieon License

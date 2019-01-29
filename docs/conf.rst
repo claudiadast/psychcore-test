@@ -52,8 +52,7 @@ like the following:
 	# Docker
 	DOCKER_ACCOUNT: 
 
-Each field must have a value for the pipeline to run.  Listed below are
-descriptions for each of the fields.  For more information about the yaml
+Listed below are descriptions for each of the fields.  Please note that the GCP-related parameters only need to be filled in if you are running downstream processes on the pipeline's resulting VCF. For more information about the yaml
 file format, see the `official yaml website`_.
 
 *Infrastructure configuration*
@@ -62,7 +61,7 @@ file format, see the `official yaml website`_.
 * ``RESOURCE_CFN_TMPL_DEPLOY_BUCKET``: Bucket name (e.g. pipeline-run)
 * ``GPCE_SSH_KEY_PAIR``: Accou pecific key pair for using AWS EC2 (e.g. John_Key)
 * ``START_POINT``: The format of the input files (fastq|bam|gvcf|vcf)
-* ``QC``: List of what QC to run (BAM|VCF)
+* ``QC (optional)``: List of what QC to run (BAM|VCF)
 
 *Input/output file locations*
 
@@ -75,7 +74,7 @@ file format, see the `official yaml website`_.
 *User assets*
 
 * ``SAMPLE_FILE``: Name of the file which has the list of sample names (prefix to .fastq.gz)
-* ``TARGET``: Interval BED file if ome is "wes" (e.g. Exome-NGv3.bed)
+* ``TARGET (optional)``: Interval BED file if ome is "wes" (e.g. Exome-NGv3.bed)
 * ``SENTIEON_PACKAGE_NAME``: The Sentieon software file (e.g. sentieon-genomics-201808.03.tar.gz)
 * ``SENTIEON_LICENSE_NAME``: Name of the Sentieon license file (e.g mylicense.lic)
 
